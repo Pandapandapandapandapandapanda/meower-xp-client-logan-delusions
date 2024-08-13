@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	function updateHome() {
 		document.getElementById("loading").style = ""
-		fetch(apiURL + "home?autoget=1", {
+		fetch(apiURL + "posts/a7bd6299-e127-4719-a090-686b26e2db57", {
 			"method":"GET"
 		}).then(function (resp) {
 			resp.json().then(function (json) {
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		ev.preventDefault();
 		console.log(ev);
 		var content = document.getElementById("post-content").value
-		fetch(apiURL + "home/", {
+		fetch(apiURL + "posts/a7bd6299-e127-4719-a090-686b26e2db57", {
 			"method":"POST",
 			"headers": {
 				"content-type": "application/json",
