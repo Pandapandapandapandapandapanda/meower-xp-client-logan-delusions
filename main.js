@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			return;
 		};
 		if(!isLoggedIn) return;
-		if(parsed.val.mode != 1) return;
+		if(parsed.post_origin != "a7bd6299-e127-4719-a090-686b26e2db57") return;
 		addPost(parsed.val)
 	}
 	ws.onclose = function (ev) {
