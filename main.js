@@ -124,7 +124,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	function updateHome() {
 		document.getElementById("loading").style = ""
 		fetch(apiURL + "posts/a7bd6299-e127-4719-a090-686b26e2db57", {
-			"method":"GET"
+			"method":"GET",
+			"headers": {
+				"token": token
+				}
 		}).then(function (resp) {
 			resp.json().then(function (json) {
 				document.getElementById("loading").style = "display: none"
