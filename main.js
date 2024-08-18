@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		if(post.reply_to) {
 			post.reply_to.forEach(reply => {
 				console.log(reply)
-				if(Object.is(reply, null)){
+				if(!reply){
 					var replyElem = document.createElement("div")
 					replyElem.classList.add("reply")
 					replyElem.appendChild(document.createElement("span"))
@@ -80,19 +80,20 @@ document.addEventListener("DOMContentLoaded", function() {
 					replyElem.appendChild(document.createElement("span"))
 					replyElem.children[1].innerHTML = escapeHTML("Message was deleted")
 					elem.appendChild(replyElem)
+				} else {
+					var replyElem = document.createElement("div")
+					replyElem.classList.add("reply")
+					replyElem.appendChild(document.createElement("span"))
+					replyElem.children[0].classList.add("reply-username");
+					replyElem.children[0].innerHTML = escapeHTML(reply.u)
+					replyElem.appendChild(document.createElement("span"))
+					var replyText = reply.p
+					if(replyText.length > 40) {
+						replyText = replyText.slice(0, 47) + "..."
+					}
+					replyElem.children[1].innerHTML = escapeHTML(replyText)
+					elem.appendChild(replyElem)
 				}
-				var replyElem = document.createElement("div")
-				replyElem.classList.add("reply")
-				replyElem.appendChild(document.createElement("span"))
-				replyElem.children[0].classList.add("reply-username");
-				replyElem.children[0].innerHTML = escapeHTML(reply.u)
-				replyElem.appendChild(document.createElement("span"))
-				var replyText = reply.p
-				if(replyText.length > 40) {
-					replyText = replyText.slice(0, 47) + "..."
-				}
-				replyElem.children[1].innerHTML = escapeHTML(replyText)
-				elem.appendChild(replyElem)
 			})
 		}
 		var postContent = document.createElement("div")
