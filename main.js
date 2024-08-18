@@ -70,6 +70,16 @@ document.addEventListener("DOMContentLoaded", function() {
 		elem.appendChild(header)
 		if(post.reply_to) {
 			post.reply_to.forEach(reply => {
+				if(!reply){
+					var replyElem = document.createElement("div")
+					replyElem.classList.add("reply")
+					replyElem.appendChild(document.createElement("span"))
+					replyElem.children[0].classList.add("reply-username");
+					replyElem.children[0].innerHTML = escapeHTML("Unknown")
+					replyElem.appendChild(document.createElement("span"))
+					replyElem.children[1].innerHTML = escapeHTML("Message was deleted")
+					elem.appendChild(replyElem)
+				}
 				var replyElem = document.createElement("div")
 				replyElem.classList.add("reply")
 				replyElem.appendChild(document.createElement("span"))
