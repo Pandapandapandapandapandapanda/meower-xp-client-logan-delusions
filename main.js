@@ -70,7 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		elem.appendChild(header)
 		if(post.reply_to) {
 			post.reply_to.forEach(reply => {
-				if(!reply){
+				console.log(reply)
+				if(Object.is(reply, null)){
 					var replyElem = document.createElement("div")
 					replyElem.classList.add("reply")
 					replyElem.appendChild(document.createElement("span"))
